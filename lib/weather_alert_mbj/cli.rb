@@ -1,6 +1,6 @@
 class WeatherAlertMbj::CLI
 
-  STATE_CODES = ["AL","AK","AZ","AR","CA","CO","CT","DE","FL","GA","HI","ID","IL","IN","IA","KS","KY","LA","ME","MD","MA","MI","MN","MS","MO","MT","NE","NV","NH","NJ","NM","NY","NC","ND","OH","OK","OR","PA","RI","SC","SD","TN","TX","UT","VT","VA","WA","WV","WI","WY"]
+  STATE_CODES = ["al", "ak", "az", "ar", "ca", "co", "ct", "de", "fl", "ga", "hi", "id", "il", "in", "ia", "ks", "ky", "la", "me", "md", "ma", "mi", "mn", "ms", "mo","mt","ne", "nv", "nh", "nj", "nm", "ny", "nc", "nd","oh", "ok", "or", "pa", "ri", "sc", "sd", "tn", "tx", "ut", "vt", "va", "wa", "wv", "wi", "wy"]
 
   def call
     puts "Welcome to Weather Alert."
@@ -12,19 +12,16 @@ class WeatherAlertMbj::CLI
 
     input = ""
 
-    while input.upcase != "EXIT"
+    while input.downcase != "exit"
       puts "\nPlease enter the two-letter code for the state you wish to get weather alerts for."
       puts "  For example, CA = California and TX = Texas"
       puts "  Or type 'Exit' to exit."
 
-      input = gets.strip.upcase
+      input = gets.strip.downcase
 
-      #if !STATE_CODES.include? (input) && input.upcase != "EXIT"
       if STATE_CODES.include?(input)
         puts "Valid state code received."
-        #puts "\n  Please double check the state code you entered."
-        #get_state
-      elsif input.upcase != "EXIT"
+      elsif input.downcase != "exit"
         puts "Please double check the state code you entered."
       end
 
