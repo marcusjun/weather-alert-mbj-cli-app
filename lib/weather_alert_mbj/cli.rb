@@ -2,6 +2,7 @@ class WeatherAlertMbj::CLI
 
   def call
     puts "Welcome to Weather Alert."
+    get_state
   end
 
   def get_state
