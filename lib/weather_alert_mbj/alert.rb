@@ -1,0 +1,3 @@
+class WeatherAlertMbj::Alert
+
+end
