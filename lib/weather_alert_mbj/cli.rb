@@ -12,12 +12,17 @@ class WeatherAlertMbj::CLI
 
     input = ""
 
-    while input != "exit"
+    while input.upcase != "EXIT"
       puts "\nPlease enter the two-letter code for the state you wish to get weather alerts for."
       puts "  For example, CA = California and TX = Texas"
       puts "  Or type 'Exit' to exit."
 
-      input = gets.strip.downcase
+      input = gets.strip.upcase!
+
+      if !STATE_CODES.include? (input) && input.upcase != "EXIT"
+        puts "\n  Please double check the state code you entered."
+        #get_state
+      end
 
     end
   end
