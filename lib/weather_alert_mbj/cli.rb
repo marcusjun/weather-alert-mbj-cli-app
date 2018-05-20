@@ -17,11 +17,15 @@ class WeatherAlertMbj::CLI
       puts "  For example, CA = California and TX = Texas"
       puts "  Or type 'Exit' to exit."
 
-      input = gets.strip.upcase!
+      input = gets.strip.upcase
 
-      if !STATE_CODES.include? (input) && input.upcase != "EXIT"
-        puts "\n  Please double check the state code you entered."
+      #if !STATE_CODES.include? (input) && input.upcase != "EXIT"
+      if STATE_CODES.include?(input)
+        puts "Valid state code received."
+        #puts "\n  Please double check the state code you entered."
         #get_state
+      elsif input.upcase != "EXIT"
+        puts "Please double check the state code you entered."
       end
 
     end
