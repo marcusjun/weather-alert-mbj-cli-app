@@ -21,6 +21,7 @@ class WeatherAlertMbj::CLI
 
       if STATE_CODES.include?(input)
         puts "Valid state code received."
+        #@alerts = WeatherAlertMbj::Alert.new(input)
       elsif input.downcase != "exit"
         puts "Please double check the state code you entered."
       end
