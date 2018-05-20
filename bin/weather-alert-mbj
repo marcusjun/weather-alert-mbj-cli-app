@@ -1,3 +1,5 @@
 #!/usr/bin/env ruby
 
+require './lib/weather_alert_mbj'
+
 WeatherAlertMbj::CLI.new.call
