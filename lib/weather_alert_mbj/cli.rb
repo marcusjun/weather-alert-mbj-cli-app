@@ -57,7 +57,7 @@ class WeatherAlertMbj::CLI
       menu_input = gets.strip.downcase
 
       if menu_input.to_i <= @alerts.length
-        puts " #{@alerts[menu_input.to_i-1]}"
+        puts "  For more info, please see \n  #{@alerts[menu_input.to_i-1].alert_url}"
       elsif menu_input != "exit"
         puts "Please double check the number you entered."
       end
