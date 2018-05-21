@@ -17,6 +17,13 @@ class WeatherAlertMbj::Alert
     alert_1.status = "Actual"
     alert_1.alert_url = "https://alerts.weather.gov/cap/wwacapget.php?x=AR125AA4CB788C.FloodWarning.125AA4D95B3CAR.LZKFLSLZK.7c002c3b990c5673652a38373a4a2842"
 
+    alert_2 = self.new
+    alert_2.name = "Dense Fog Advisory"
+    alert_2.state = "wi"
+    alert_2.date = "May 21 at 11:01AM CDT"
+    alert_2.status = "Actual"
+    alert_2.alert_url = "https://alerts.weather.gov/cap/wwacapget.php?x=WI125AA4CB8DA4.DenseFogAdvisory.125AA4DA3340WI.MKXNPWMKX.eca3d684369e7e89182de7826d073f28"
+
     #def self.create(name)
       #new_artist=self.new(name)
       #new_artist.save
