@@ -4,6 +4,10 @@ class WeatherAlertMbj::Alert
 
   @@all=[]
 
+  def self.all
+    @@all
+  end
+  
   def self.create_alerts(input)
 
     #def self.create(name)
