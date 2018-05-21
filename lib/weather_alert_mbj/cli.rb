@@ -2,13 +2,17 @@ class WeatherAlertMbj::CLI
 
   STATE_CODES = ["al", "ak", "az", "ar", "ca", "co", "ct", "de", "fl", "ga", "hi", "id", "il", "in", "ia", "ks", "ky", "la", "me", "md", "ma", "mi", "mn", "ms", "mo","mt","ne", "nv", "nh", "nj", "nm", "ny", "nc", "nd","oh", "ok", "or", "pa", "ri", "sc", "sd", "tn", "tx", "ut", "vt", "va", "wa", "wv", "wi", "wy"]
 
+  #Use hash for state codes, instead?
+  #STATE_CODES = [{"al" => "alabama"},{"ak" => "alaska"},{"az" => "arizona"}]
+
   def call
     puts "Welcome to Weather Alert."
-    get_state
+    get_input
     goodbye
+
   end
 
-  def get_state
+  def get_input
 
     input = ""
 
@@ -20,13 +24,32 @@ class WeatherAlertMbj::CLI
       input = gets.strip.downcase
 
       if STATE_CODES.include?(input)
-        puts "Valid state code received."
-        #@alerts = WeatherAlertMbj::Alert.new(input)
+
+        get_alerts(input)
+        
+        #puts "Valid state code received."
+        #@alerts = WeatherAlertMbj::Alert.create_alerts(input)
+        #puts @alerts
+        #@alerts.each_with_index do |alert,index|
+          #puts "  #{index+1} #{alert.name} (#{alert.state.upcase})"
+        #end
+
       elsif input.downcase != "exit"
         puts "Please double check the state code you entered."
       end
 
     end
+  end
+
+  def get_alerts(input)
+    @alerts = WeatherAlertMbj::Alert.create_alerts(input)
+    
+    puts @alerts
+    
+    @alerts.each_with_index do |alert,index|
+      puts "  #{index+1} #{alert.name} (#{alert.state.upcase})"
+    end
+
   end
 
   def goodbye
