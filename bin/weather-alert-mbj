@@ -1,5 +1,7 @@
 #!/usr/bin/env ruby
 
-require './lib/weather_alert_mbj'
+#require './lib/weather_alert_mbj'
+require "bundler/setup"
+require "weather_alert_mbj"
 
 WeatherAlertMbj::CLI.new.call

@@ -12,3 +12,4 @@ require "weather_alert_mbj"
 
 require "irb"
 IRB.start(__FILE__)
+#IRB.start
