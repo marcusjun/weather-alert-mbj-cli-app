@@ -24,6 +24,8 @@ class WeatherAlertMbj::Alert
     alert_2.status = "Actual"
     alert_2.alert_url = "https://alerts.weather.gov/cap/wwacapget.php?x=WI125AA4CB8DA4.DenseFogAdvisory.125AA4DA3340WI.MKXNPWMKX.eca3d684369e7e89182de7826d073f28"
 
+    [alert_1,alert_2]
+
     #def self.create(name)
       #new_artist=self.new(name)
       #new_artist.save
