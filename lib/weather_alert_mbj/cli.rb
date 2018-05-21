@@ -26,7 +26,7 @@ class WeatherAlertMbj::CLI
       if STATE_CODES.include?(input)
 
         get_alerts(input)
-        
+
         #puts "Valid state code received."
         #@alerts = WeatherAlertMbj::Alert.create_alerts(input)
         #puts @alerts
@@ -43,13 +43,25 @@ class WeatherAlertMbj::CLI
 
   def get_alerts(input)
     @alerts = WeatherAlertMbj::Alert.create_alerts(input)
-    
+
     puts @alerts
-    
+
     @alerts.each_with_index do |alert,index|
       puts "  #{index+1} #{alert.name} (#{alert.state.upcase})"
     end
 
+    menu_input = ""
+
+    while menu_input.downcase != "exit"
+      puts "Please enter the number of the weather alert you want more info on."
+      menu_input = gets.strip.downcase
+
+      if menu_input.to_i <= @alerts.length
+        puts " #{@alerts[menu_input.to_i-1]}"
+      elsif menu_input != "exit"
+        puts "Please double check the number you entered."
+      end
+    end
   end
 
   def goodbye
