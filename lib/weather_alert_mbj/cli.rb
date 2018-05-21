@@ -47,13 +47,14 @@ class WeatherAlertMbj::CLI
     puts @alerts
 
     @alerts.each_with_index do |alert,index|
-      puts "  #{index+1} #{alert.name} (#{alert.state.upcase})"
+      puts "  #{index+1}: #{alert.name} (#{alert.state.upcase})"
     end
 
     menu_input = ""
 
     while menu_input.downcase != "exit"
       puts "Please enter the number of the weather alert you want more info on."
+      puts "Or type 'Exit' to exit."
       menu_input = gets.strip.downcase
 
       if menu_input.to_i <= @alerts.length
@@ -66,6 +67,7 @@ class WeatherAlertMbj::CLI
 
   def goodbye
     puts "\nThanks for using Weather Alert. Goodbye."
+    puts "  For more weather alerts, please visit https://alerts.weather.gov/"
   end
 
 end
