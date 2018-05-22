@@ -1,7 +1,7 @@
 require 'open-uri'
 require 'pry'
 require 'nokogiri'
-#require 'colorize'
+require 'colorize'
 
 #require "weather_alert_mbj/version"
 require_relative "./weather_alert_mbj/version"
