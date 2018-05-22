@@ -29,6 +29,8 @@ class WeatherAlertMbj::CLI
       #input = gets.strip.downcase
       @input = gets.strip.downcase
 
+      line_break
+
       #if STATE_CODES.include?(input)
       if STATE_CODES.include?(@input)
 
@@ -74,10 +76,13 @@ class WeatherAlertMbj::CLI
     while menu_input.downcase != "exit"
       #get_and_list_alerts
 
+      line_break
       puts "\nPlease enter the number of the alert for more details."
       puts "  Or type 'List' to see a list of alerts."
       puts "  Or type 'Exit' to exit."
       menu_input = gets.strip.downcase
+
+      line_break
 
       if menu_input.downcase == "list"
         display_alerts
@@ -85,7 +90,7 @@ class WeatherAlertMbj::CLI
       #if menu_input.to_i <= @alerts.length
       elsif menu_input.to_i <= @alerts.length
         puts "\n#{@alerts[menu_input.to_i-1].name}"
-        puts "Description:\n  #{@alerts[menu_input.to_i-1].description}"
+        puts "\nDescription:\n  #{@alerts[menu_input.to_i-1].description}"
         puts "\nInstructions:\n  #{@alerts[menu_input.to_i-1].instructions}" unless @alerts[menu_input.to_i-1].instructions == ""
         puts "\nFor more info, please see \n  #{@alerts[menu_input.to_i-1].alert_url}"
 
@@ -103,7 +108,7 @@ class WeatherAlertMbj::CLI
   end
 
   def line_break
-    puts "------------------------------------------------------"
+    puts "\n-------------------------------------------------------"
   end
 
 end
