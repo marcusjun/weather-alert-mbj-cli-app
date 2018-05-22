@@ -50,7 +50,7 @@ class WeatherAlertMbj::Alert
 
         #new_alert.urgency = box.css("urgency").text
         if box.css("urgency").text.downcase == "immediate"
-          new_alert.urgency = "! " + box.css("urgency").text.upcase + " !"
+          new_alert.urgency = box.css("urgency").text.upcase
         else
           new_alert.urgency = box.css("urgency").text
         end
@@ -72,7 +72,7 @@ class WeatherAlertMbj::Alert
 
     alerts_by_state
 
-    binding.pry
+    #binding.pry
 
   end
 
