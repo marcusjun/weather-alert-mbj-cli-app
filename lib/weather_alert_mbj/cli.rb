@@ -8,7 +8,7 @@ class WeatherAlertMbj::CLI
   #STATE_CODES = [{"al" => "alabama"},{"ak" => "alaska"},{"az" => "arizona"}]
 
   def call
-    puts "\nWelcome to Weather Alert.".colorize(:color => :light_white)#, :background => :light_white)
+    puts "\nWelcome to Weather Alert.".colorize(:color => :blue)#.colorize(:color => :light_white)#, :background => :light_white)
     get_state_and_its_alerts
 
     goodbye
@@ -29,10 +29,14 @@ class WeatherAlertMbj::CLI
       #input = gets.strip.downcase
       @input = gets.strip.downcase
 
-      line_break
+      #line_break
 
       #if STATE_CODES.include?(input)
       if STATE_CODES.include?(@input)
+
+        puts "\nLoading... (This may take up to 1 minute to retrieve data.)"
+
+        line_break
 
         @alerts = WeatherAlertMbj::Alert.create_alerts(@input)
 
@@ -62,7 +66,11 @@ class WeatherAlertMbj::CLI
     @alerts.each_with_index do |alert,index|
       #puts "  #{index+1}: #{alert.name} (#{alert.state.upcase})"
       puts "\nAlert ##{index+1}: #{alert.name} (#{alert.state.upcase})".colorize(:color => :blue)
-      puts "  Urgency: #{alert.urgency}"
+      if alert.urgency.downcase == "immediate"
+        puts "  Urgency: #{alert.urgency}".colorize(:color => :red)#, :background => :light_white)
+      else
+        puts "  Urgency: #{alert.urgency}"
+      end
       puts "  Areas: #{alert.areas_affected}\n  Date: #{alert.date}"
     end
 
@@ -91,10 +99,13 @@ class WeatherAlertMbj::CLI
 
       #if menu_input.to_i <= @alerts.length
       elsif menu_input.to_i <= @alerts.length
-        puts "\n#{@alerts[menu_input.to_i-1].name}"
-        puts "\nDescription:\n  #{@alerts[menu_input.to_i-1].description}"
-        puts "\nInstructions:\n  #{@alerts[menu_input.to_i-1].instructions}" unless @alerts[menu_input.to_i-1].instructions == ""
-        puts "\nFor more info, please see \n  #{@alerts[menu_input.to_i-1].alert_url}"
+        puts "\n#{@alerts[menu_input.to_i-1].name}".colorize(:color => :blue)
+        puts "\nDescription:".colorize(:color => :blue)
+        puts "#{@alerts[menu_input.to_i-1].description}"
+        puts "\nInstructions:".colorize(:color => :blue) unless @alerts[menu_input.to_i-1].instructions == ""
+        puts "#{@alerts[menu_input.to_i-1].instructions}" unless @alerts[menu_input.to_i-1].instructions == ""
+        puts "\nFor more info, please see".colorize(:color => :blue)
+        puts"#{@alerts[menu_input.to_i-1].alert_url}"
 
       elsif menu_input != "exit"
         puts "Please double check the number you entered.".colorize(:color => :light_white, :background => :red)
@@ -105,8 +116,8 @@ class WeatherAlertMbj::CLI
   end
 
   def goodbye
-    puts "\nThanks for using Weather Alert. Goodbye.".colorize(:color => :light_white)
-    puts "  For more weather alerts, please visit https://alerts.weather.gov/\n".colorize(:color => :light_white)
+    puts "\nThanks for using Weather Alert. Goodbye.".colorize(:color => :blue)#.colorize(:color => :light_white)
+    puts "  For more weather alerts, please visit https://alerts.weather.gov/\n".colorize(:color => :blue)#.colorize(:color => :light_white)
   end
 
   def line_break
