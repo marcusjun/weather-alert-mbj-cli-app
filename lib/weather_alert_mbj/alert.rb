@@ -1,6 +1,6 @@
 class WeatherAlertMbj::Alert
 
-  attr_accessor :name, :issue_date, :expiration_date, :urgency, :status, :areas_affected, :state_url, :state, :alert_url
+  attr_accessor :name, :date, :urgency, :status, :areas_affected, :state_url, :state, :alert_url
 
   #@@all=[]
 
@@ -29,12 +29,12 @@ class WeatherAlertMbj::Alert
       new_alert.status = box.css("status").text
       new_alert.areas_affected = box.css("areadesc").text
 
-      new_alert.issue_date = box.css("title").text
+      new_alert.date = box.css("title").text.partition("issued")[-1].lstrip!.gsub(" by NWS","")
 
 
       alerts_by_state << new_alert
 
-      binding.pry
+      #binding.pry
     end
 
     #doc.css("link").attribute("href").value
