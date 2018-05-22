@@ -15,24 +15,35 @@ class WeatherAlertMbj::Alert
 
     #binding.pry
 
-    doc.css("event").each do |box|
+    #doc.css("event").each do |box|
+    doc.css("entry").each do |box|
     #doc.css(".headline").each do |box|
       #binding.pry
       new_alert = self.new
       new_alert.state = input.upcase
       new_alert.state_url = url_holder
-      new_alert.name = box.text #doc.css("event").first.text #box.css("a").text
+      new_alert.name = box.css("event").text #box.text #doc.css("event").first.text #box.css("a").text
+
+      new_alert.alert_url = box.css("link").attribute("href").value
+      new_alert.urgency = box.css("urgency").text
+      new_alert.status = box.css("status").text
+      new_alert.areas_affected = box.css("areadesc").text
+
+      new_alert.issue_date = box.css("title").text
+
 
       alerts_by_state << new_alert
 
-      #binding.pry
+      binding.pry
     end
 
     #doc.css("link").attribute("href").value
 
+    binding.pry
+
     alerts_by_state
 
-    #binding.pry
+
 
   end
 
