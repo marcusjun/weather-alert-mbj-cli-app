@@ -9,17 +9,20 @@ class WeatherAlertMbj::Alert
     alerts_by_state =[]
 
     url_holder = "https://alerts.weather.gov/cap/#{input}.php?x=1"
+    #url_holder = "https://alerts.weather.gov/cap/wwacapget.php?x=CA125AA4CC4028.BeachHazardsStatement.125AA5064C50CA.SGXCFWSGX.166e5bee873489d0175088aad5af3ac9"
 
     doc = Nokogiri::HTML(open(url_holder))
 
     binding.pry
 
+    #doc.css("event").each do |box|
     doc.css(".headline").each do |box|
+      binding.pry
       new_alert = self.new
       new_alert.state_url = url_holder
-      new_alert.name = box.css("a").text
+      new_alert.name = box.text #doc.css("event").first.text #box.css("a").text
 
-      binding.pry
+      #binding.pry
 
       #alerts_by_state << new_alert
     end
