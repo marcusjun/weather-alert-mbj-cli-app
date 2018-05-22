@@ -104,7 +104,7 @@ class WeatherAlertMbj::CLI
 
   def goodbye
     puts "\nThanks for using Weather Alert. Goodbye."
-    puts "  For more weather alerts, please visit https://alerts.weather.gov/"
+    puts "  For more weather alerts, please visit https://alerts.weather.gov/\n"
   end
 
   def line_break
