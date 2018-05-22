@@ -65,7 +65,8 @@ class WeatherAlertMbj::CLI
       menu_input = gets.strip.downcase
 
       if menu_input.to_i <= @alerts.length
-        puts "\nDescription:\n  #{@alerts[menu_input.to_i-1].description}"
+        puts "\n#{@alerts[menu_input.to_i-1].name}"
+        puts "Description:\n  #{@alerts[menu_input.to_i-1].description}"
         puts "\nInstructions:\n  #{@alerts[menu_input.to_i-1].instructions}" unless @alerts[menu_input.to_i-1].instructions == ""
         puts "\nFor more info, please see \n  #{@alerts[menu_input.to_i-1].alert_url}"
       elsif menu_input != "exit"
@@ -77,6 +78,10 @@ class WeatherAlertMbj::CLI
   def goodbye
     puts "\nThanks for using Weather Alert. Goodbye."
     puts "  For more weather alerts, please visit https://alerts.weather.gov/"
+  end
+
+  def line_break
+    puts "------------------------------------------------------"
   end
 
 end
