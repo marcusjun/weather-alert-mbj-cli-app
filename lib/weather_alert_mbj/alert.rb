@@ -2,11 +2,35 @@ class WeatherAlertMbj::Alert
 
   attr_accessor :name, :issue_date, :expiration_date, :urgency, :status, :areas_affected, :state_url, :state, :alert_url
 
-  @@all=[]
+  #@@all=[]
 
   def self.create_alerts(input)
 
-    
+    alerts_by_state =[]
+
+    url_holder = "https://alerts.weather.gov/cap/#{input}.php?x=1"
+
+    doc = Nokogiri::HTML(open(url_holder))
+
+    binding.pry
+
+    doc.css(".headline").each do |box|
+      new_alert = self.new
+      new_alert.state_url = url_holder
+      new_alert.name = box.css("a").text
+
+      binding.pry
+
+      #alerts_by_state << new_alert
+    end
+
+    alerts_by_state
+
+  end
+
+
+
+
     #alert_1 = self.new
     #alert_1.name = "Flood Warning"
     #alert_1.state = "ar"
@@ -41,7 +65,7 @@ class WeatherAlertMbj::Alert
     #@state = input
     #@state_url = "https://alerts.weather.gov/cap/#{@state}.php?x=1"
     #web_scraper
-  end
+  #end
 
   def self.web_scraper
     #take the @url and scrape
