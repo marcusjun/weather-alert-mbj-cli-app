@@ -8,7 +8,7 @@ class WeatherAlertMbj::CLI
   #STATE_CODES = [{"al" => "alabama"},{"ak" => "alaska"},{"az" => "arizona"}]
 
   def call
-    puts "\nWelcome to Weather Alert.".colorize(:color => :blue, :background => :white)
+    puts "\nWelcome to Weather Alert.".colorize(:color => :blue, :background => :light_white)
     get_state_and_its_alerts
 
     goodbye
@@ -48,7 +48,7 @@ class WeatherAlertMbj::CLI
         #end
 
       elsif input.downcase != "exit"
-        puts "Please double check the state code you entered."
+        puts "Please double check the state code you entered.".colorize(:color => :light_white, :background => :red)#(:color => :red)
       end
 
     end
@@ -95,7 +95,7 @@ class WeatherAlertMbj::CLI
         puts "\nFor more info, please see \n  #{@alerts[menu_input.to_i-1].alert_url}"
 
       elsif menu_input != "exit"
-        puts "Please double check the number you entered."
+        puts "Please double check the number you entered.".colorize(:color => :light_white, :background => :red)
       end
     end
 
