@@ -8,7 +8,7 @@ class WeatherAlertMbj::CLI
   #STATE_CODES = [{"al" => "alabama"},{"ak" => "alaska"},{"az" => "arizona"}]
 
   def call
-    puts "\nWelcome to Weather Alert.".colorize(:color => :blue)#, :background => :light_white)
+    puts "\nWelcome to Weather Alert.".colorize(:color => :light_white)#, :background => :light_white)
     get_state_and_its_alerts
 
     goodbye
@@ -61,7 +61,9 @@ class WeatherAlertMbj::CLI
 
     @alerts.each_with_index do |alert,index|
       #puts "  #{index+1}: #{alert.name} (#{alert.state.upcase})"
-      puts "\nAlert ##{index+1}: #{alert.name} (#{alert.state.upcase})\n  Urgency: #{alert.urgency}\n  Areas: #{alert.areas_affected}\n  Date: #{alert.date}"
+      puts "\nAlert ##{index+1}: #{alert.name} (#{alert.state.upcase})".colorize(:color => :blue)
+      puts "  Urgency: #{alert.urgency}"
+      puts "  Areas: #{alert.areas_affected}\n  Date: #{alert.date}"
     end
 
     #get_and_display_alert_details
@@ -103,8 +105,8 @@ class WeatherAlertMbj::CLI
   end
 
   def goodbye
-    puts "\nThanks for using Weather Alert. Goodbye.".colorize(:color => :blue)
-    puts "  For more weather alerts, please visit https://alerts.weather.gov/\n".colorize(:color => :blue)
+    puts "\nThanks for using Weather Alert. Goodbye.".colorize(:color => :light_white)
+    puts "  For more weather alerts, please visit https://alerts.weather.gov/\n".colorize(:color => :light_white)
   end
 
   def line_break
