@@ -8,7 +8,7 @@ class WeatherAlertMbj::CLI
   #STATE_CODES = [{"al" => "alabama"},{"ak" => "alaska"},{"az" => "arizona"}]
 
   def call
-    puts "\nWelcome to Weather Alert.".colorize(:color => :blue, :background => :light_white)
+    puts "\nWelcome to Weather Alert.".colorize(:color => :blue)#, :background => :light_white)
     get_state_and_its_alerts
 
     goodbye
@@ -22,7 +22,7 @@ class WeatherAlertMbj::CLI
 
     #while input.downcase != "exit"
     while @input.downcase != "exit"
-      puts "\nPlease enter the two-letter code for the state you wish to get weather alerts for."
+      puts "\nPlease enter the two-letter code for the state you wish to get weather alerts for.".colorize(:color => :green)
       puts "  For example, CA = California and TX = Texas"
       puts "  Or type 'Exit' to exit."
 
@@ -77,7 +77,7 @@ class WeatherAlertMbj::CLI
       #get_and_list_alerts
 
       line_break
-      puts "\nPlease enter the number of the alert for more details."
+      puts "\nPlease enter the number of the alert for more details.".colorize(:color => :green)
       puts "  Or type 'List' to see a list of alerts."
       puts "  Or type 'Exit' to exit."
       menu_input = gets.strip.downcase
@@ -103,8 +103,8 @@ class WeatherAlertMbj::CLI
   end
 
   def goodbye
-    puts "\nThanks for using Weather Alert. Goodbye."
-    puts "  For more weather alerts, please visit https://alerts.weather.gov/\n"
+    puts "\nThanks for using Weather Alert. Goodbye.".colorize(:color => :blue)
+    puts "  For more weather alerts, please visit https://alerts.weather.gov/\n".colorize(:color => :blue)
   end
 
   def line_break
