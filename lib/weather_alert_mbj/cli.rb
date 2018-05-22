@@ -54,7 +54,7 @@ class WeatherAlertMbj::CLI
 
     @alerts.each_with_index do |alert,index|
       #puts "  #{index+1}: #{alert.name} (#{alert.state.upcase})"
-      puts "\nAlert ##{index+1}: #{alert.name}\n  Status: #{alert.urgency}\n  Areas: #{alert.areas_affected}\n"
+      puts "\nAlert ##{index+1}: #{alert.name} (#{alert.state.upcase})\n  Status: #{alert.urgency}\n  Areas: #{alert.areas_affected}\n  Date: #{alert.date}"
     end
 
     menu_input = ""
@@ -65,8 +65,8 @@ class WeatherAlertMbj::CLI
       menu_input = gets.strip.downcase
 
       if menu_input.to_i <= @alerts.length
-        puts "\nDescription:\n#{@alerts[menu_input.to_i-1].description}"
-        puts "\nInstructions:\n#{@alerts[menu_input.to_i-1].instructions}" unless @alerts[menu_input.to_i-1].instructions == ""
+        puts "\nDescription:\n  #{@alerts[menu_input.to_i-1].description}"
+        puts "\nInstructions:\n  #{@alerts[menu_input.to_i-1].instructions}" unless @alerts[menu_input.to_i-1].instructions == ""
         puts "\nFor more info, please see \n  #{@alerts[menu_input.to_i-1].alert_url}"
       elsif menu_input != "exit"
         puts "Please double check the number you entered."
