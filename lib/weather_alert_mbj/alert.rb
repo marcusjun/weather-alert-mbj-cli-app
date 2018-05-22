@@ -48,12 +48,12 @@ class WeatherAlertMbj::Alert
 
         #binding.pry
 
-        #new_alert.urgency = box.css("urgency").text
-        if box.css("urgency").text.downcase == "immediate"
-          new_alert.urgency = box.css("urgency").text.upcase
-        else
-          new_alert.urgency = box.css("urgency").text
-        end
+        new_alert.urgency = box.css("urgency").text
+        #if box.css("urgency").text.downcase == "immediate"
+          #new_alert.urgency = box.css("urgency").text.upcase
+        #else
+          #new_alert.urgency = box.css("urgency").text
+        #end
 
         new_alert.status = box.css("status").text
         new_alert.areas_affected = box.css("areadesc").text
