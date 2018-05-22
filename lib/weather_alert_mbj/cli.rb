@@ -9,12 +9,13 @@ class WeatherAlertMbj::CLI
 
   def call
     puts "Welcome to Weather Alert."
-    get_states
+    get_state
+
     goodbye
 
   end
 
-  def get_states
+  def get_state
 
     #input = ""
     @input = ""
@@ -31,7 +32,7 @@ class WeatherAlertMbj::CLI
       #if STATE_CODES.include?(input)
       if STATE_CODES.include?(@input)
 
-        get_alerts#(input)
+        get_and_display_alerts#(input)
 
         #puts "Valid state code received."
         #@alerts = WeatherAlertMbj::Alert.create_alerts(input)
@@ -47,7 +48,7 @@ class WeatherAlertMbj::CLI
     end
   end
 
-  def get_alerts#(input)
+  def get_and_display_alerts#(input)
     @alerts = WeatherAlertMbj::Alert.create_alerts(@input)
 
     #puts @alerts
@@ -57,6 +58,11 @@ class WeatherAlertMbj::CLI
       puts "\nAlert ##{index+1}: #{alert.name} (#{alert.state.upcase})\n  Status: #{alert.urgency}\n  Areas: #{alert.areas_affected}\n  Date: #{alert.date}"
     end
 
+    get_and_display_alert_details
+
+  end
+
+  def get_and_display_alert_details
     menu_input = ""
 
     while menu_input.downcase != "exit"
@@ -73,6 +79,8 @@ class WeatherAlertMbj::CLI
         puts "Please double check the number you entered."
       end
     end
+
+
   end
 
   def goodbye
