@@ -13,21 +13,26 @@ class WeatherAlertMbj::Alert
 
     doc = Nokogiri::HTML(open(url_holder))
 
-    binding.pry
+    #binding.pry
 
-    #doc.css("event").each do |box|
-    doc.css(".headline").each do |box|
-      binding.pry
+    doc.css("event").each do |box|
+    #doc.css(".headline").each do |box|
+      #binding.pry
       new_alert = self.new
+      new_alert.state = input.upcase
       new_alert.state_url = url_holder
       new_alert.name = box.text #doc.css("event").first.text #box.css("a").text
 
-      #binding.pry
+      alerts_by_state << new_alert
 
-      #alerts_by_state << new_alert
+      #binding.pry
     end
 
+    #doc.css("link").attribute("href").value
+
     alerts_by_state
+
+    #binding.pry
 
   end
 
