@@ -54,7 +54,7 @@ class WeatherAlertMbj::CLI
 
     @alerts.each_with_index do |alert,index|
       #puts "  #{index+1}: #{alert.name} (#{alert.state.upcase})"
-      puts "\n  Alert ##{index+1}: #{alert.name} #{alert.urgency} (#{alert.areas_affected})\n"
+      puts "\nAlert ##{index+1}: #{alert.name}\n  Status: #{alert.urgency}\n  Areas: #{alert.areas_affected}\n"
     end
 
     menu_input = ""
