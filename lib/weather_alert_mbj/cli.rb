@@ -8,14 +8,14 @@ class WeatherAlertMbj::CLI
   #STATE_CODES = [{"al" => "alabama"},{"ak" => "alaska"},{"az" => "arizona"}]
 
   def call
-    puts "Welcome to Weather Alert."
-    get_state
+    puts "\nWelcome to Weather Alert."
+    get_state_and_its_alerts
 
     goodbye
 
   end
 
-  def get_state
+  def get_state_and_its_alerts
 
     #input = ""
     @input = ""
@@ -31,6 +31,8 @@ class WeatherAlertMbj::CLI
 
       #if STATE_CODES.include?(input)
       if STATE_CODES.include?(@input)
+
+        @alerts = WeatherAlertMbj::Alert.create_alerts(@input)
 
         get_and_display_alert_details
 
@@ -50,14 +52,14 @@ class WeatherAlertMbj::CLI
     end
   end
 
-  def get_and_list_alerts#(input)
-    @alerts = WeatherAlertMbj::Alert.create_alerts(@input)
+  def display_alerts#(input)
+    #@alerts = WeatherAlertMbj::Alert.create_alerts(@input)
 
     #puts @alerts
 
     @alerts.each_with_index do |alert,index|
       #puts "  #{index+1}: #{alert.name} (#{alert.state.upcase})"
-      puts "\nAlert ##{index+1}: #{alert.name} (#{alert.state.upcase})\n  Status: #{alert.urgency}\n  Areas: #{alert.areas_affected}\n  Date: #{alert.date}"
+      puts "\nAlert ##{index+1}: #{alert.name} (#{alert.state.upcase})\n  Urgency: #{alert.urgency}\n  Areas: #{alert.areas_affected}\n  Date: #{alert.date}"
     end
 
     #get_and_display_alert_details
@@ -65,7 +67,7 @@ class WeatherAlertMbj::CLI
   end
 
   def get_and_display_alert_details
-    get_and_list_alerts
+    display_alerts
 
     menu_input = ""
 
@@ -78,7 +80,7 @@ class WeatherAlertMbj::CLI
       menu_input = gets.strip.downcase
 
       if menu_input.downcase == "list"
-        get_and_list_alerts
+        display_alerts
 
       #if menu_input.to_i <= @alerts.length
       elsif menu_input.to_i <= @alerts.length
