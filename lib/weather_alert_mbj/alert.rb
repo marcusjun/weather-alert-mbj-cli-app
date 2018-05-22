@@ -62,7 +62,7 @@ class WeatherAlertMbj::Alert
 
     alerts_by_state
 
-    binding.pry
+    #binding.pry
 
   end
 
