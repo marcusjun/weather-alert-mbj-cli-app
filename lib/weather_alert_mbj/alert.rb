@@ -1,6 +1,6 @@
 class WeatherAlertMbj::Alert
 
-  attr_accessor :name, :date, :urgency, :status, :areas_affected, :state_url, :state, :alert_url
+  attr_accessor :name, :date, :urgency, :status, :areas_affected, :state_url, :state, :alert_url, :description, :instructions
 
   #@@all=[]
 
@@ -31,14 +31,24 @@ class WeatherAlertMbj::Alert
         new_alert.status = "n/a"
         new_alert.areas_affected = "n/a"
         new_alert.alert_url = "n/a"
+        new_alert.description = "n/a"
+        new_alert.instructions = "n/a"
+
 
       else
 
         new_alert.name = box.css("event").text #box.text #doc.css("event").first.text #box.css("a").text
 
         new_alert.alert_url = box.css("link").attribute("href").value
-        #new_alert.urgency = box.css("urgency").text
 
+        #webscraping the alert_url for more details
+        desc_doc = Nokogiri::HTML(open(new_alert.alert_url))
+        new_alert.description = desc_doc.css("description").text
+        new_alert.instructions = desc_doc.css("instruction").text
+
+        #binding.pry
+
+        #new_alert.urgency = box.css("urgency").text
         if box.css("urgency").text.downcase == "immediate"
           new_alert.urgency = "! " + box.css("urgency").text.upcase + " !"
         else
@@ -62,7 +72,7 @@ class WeatherAlertMbj::Alert
 
     alerts_by_state
 
-    #binding.pry
+    binding.pry
 
   end
 
