@@ -9,12 +9,12 @@ class WeatherAlertMbj::CLI
 
   def call
     puts "Welcome to Weather Alert."
-    get_input
+    get_states
     goodbye
 
   end
 
-  def get_input
+  def get_states
 
     #input = ""
     @input = ""
