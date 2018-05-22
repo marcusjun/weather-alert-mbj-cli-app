@@ -32,26 +32,32 @@ class WeatherAlertMbj::Alert
         new_alert.name = box.css("event").text #box.text #doc.css("event").first.text #box.css("a").text
 
         new_alert.alert_url = box.css("link").attribute("href").value
-        new_alert.urgency = box.css("urgency").text
+        #new_alert.urgency = box.css("urgency").text
+
+        if box.css("urgency").text.downcase == "immediate"
+          new_alert.urgency = "! " + box.css("urgency").text.upcase + " !"
+        else
+          new_alert.urgency = box.css("urgency").text
+        end
+
         new_alert.status = box.css("status").text
         new_alert.areas_affected = box.css("areadesc").text
-
         new_alert.date = box.css("title").text.partition("issued")[-1].lstrip!.gsub(" by NWS","")
 
       end
 
       alerts_by_state << new_alert
 
-      binding.pry
+      #binding.pry
     end
 
     #doc.css("link").attribute("href").value
 
-    #binding.pry
+
 
     alerts_by_state
 
-
+    binding.pry
 
   end
 
