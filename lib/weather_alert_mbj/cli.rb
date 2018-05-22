@@ -8,7 +8,7 @@ class WeatherAlertMbj::CLI
   #STATE_CODES = [{"al" => "alabama"},{"ak" => "alaska"},{"az" => "arizona"}]
 
   def call
-    puts "\nWelcome to Weather Alert."
+    puts "\nWelcome to Weather Alert.".colorize(:color => :blue, :background => :white)
     get_state_and_its_alerts
 
     goodbye
