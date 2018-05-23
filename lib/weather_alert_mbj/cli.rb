@@ -2,7 +2,7 @@ class WeatherAlertMbj::CLI
 
   attr_accessor :input, :alerts
 
-  STATE_CODES = ["al", "ak", "as", "az", "ar", "ca", "co", "ct", "dc", "de", "fl", "ga", "gu", "hi", "id", "il", "in", "ia", "ks", "ky", "la", "me", "md", "ma", "mi", "mn", "mp", "ms", "mo","mt","ne", "nv", "nh", "nj", "nm", "ny", "nc", "nd","oh", "ok", "or", "pa", "pr", "ri", "sc", "sd", "tn", "tx", "um", "us", "ut", "vt", "va", "vi", "wa", "wv", "wi", "wy"]
+  STATE_CODES = ["al", "ak", "as", "az", "ar", "ca", "co", "ct", "dc", "de", "fl", "ga", "gu", "hi", "id", "il", "in", "ia", "ks", "ky", "la", "me", "md", "ma", "mi", "mn", "mp", "ms", "mo", "mt", "ne", "nv", "nh", "nj", "nm", "ny", "nc", "nd", "oh", "ok", "or", "pa", "pr", "ri", "sc", "sd", "tn", "tx", "um", "us", "ut", "vt", "va", "vi", "wa", "wv", "wi", "wy"]
 
   #Use hash for state codes, instead?
   #STATE_CODES = [{"al" => "alabama"},{"ak" => "alaska"},{"az" => "arizona"}]
@@ -22,7 +22,7 @@ class WeatherAlertMbj::CLI
 
     #while input.downcase != "exit"
     while @input.downcase != "exit"
-      puts "\nPlease enter the code for the US state or territory you wish to get weather alerts for.".colorize(:color => :green)
+      puts "\nPlease enter the two-letter code for the US state or territory\nyou wish to get weather alerts for.".colorize(:color => :green)
       puts "  For example, CA = California and TX = Texas"
       puts "  Or type 'Exit' to quit Weather Alert."
 
@@ -54,7 +54,7 @@ class WeatherAlertMbj::CLI
 
       elsif input.downcase != "exit"
         line_break
-        puts "\nPlease double check the state code you entered.".colorize(:color => :light_white, :background => :red)#(:color => :red)
+        puts "\nPlease double check the code you entered.".colorize(:color => :light_white, :background => :red)#(:color => :red)
         line_break
       end
 
@@ -69,7 +69,8 @@ class WeatherAlertMbj::CLI
     @alerts.each_with_index do |alert,index|
 
       if alert.name == "There are no active watches, warnings or advisories"
-        puts "\n#{alert.name} for #{alert.state.upcase}.".colorize(:color => :blue)
+        #puts "\nAs of #{Time.now.asctime}: #{alert.name} for #{alert.state.upcase}.".colorize(:color => :blue)
+        puts "\nCurrently: #{alert.name} for #{alert.state.upcase}.".colorize(:color => :blue)
 
       else
         #puts "  #{index+1}: #{alert.name} (#{alert.state.upcase})"
