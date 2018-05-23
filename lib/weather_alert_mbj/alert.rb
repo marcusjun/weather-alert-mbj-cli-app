@@ -1,6 +1,8 @@
 class WeatherAlertMbj::Alert
 
-  attr_accessor :name, :date, :urgency, :status, :areas_affected, :state_url, :state, :alert_url, :description, :instructions
+  attr_accessor :name, :date, :urgency, :areas_affected, :state_url, :state, :alert_url, :description, :instructions
+
+  #:status
 
   #@@all=[]
 
@@ -29,7 +31,7 @@ class WeatherAlertMbj::Alert
         new_alert.name = "There are no active watches, warnings or advisories"
         new_alert.date = "n/a"
         new_alert.urgency = "n/a"
-        new_alert.status = "n/a"
+        #new_alert.status = "n/a"
         new_alert.areas_affected = "n/a"
         new_alert.alert_url = "n/a"
         new_alert.description = "n/a"
@@ -56,7 +58,8 @@ class WeatherAlertMbj::Alert
           #new_alert.urgency = box.css("urgency").text
         #end
 
-        new_alert.status = box.css("status").text
+        #Maybe I don't need status? Because it's almost always "actual"
+        #new_alert.status = box.css("status").text
         new_alert.areas_affected = box.css("areadesc").text
         new_alert.date = box.css("title").text.partition("issued")[-1].lstrip!.gsub(" by NWS","")
 
