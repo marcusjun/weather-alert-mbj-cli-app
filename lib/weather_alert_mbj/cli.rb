@@ -108,7 +108,7 @@ class WeatherAlertMbj::CLI
 
       #if menu_input.to_i <= @alerts.length
     elsif menu_input.to_i <= @alerts.length && menu_input.to_i > 0
-        puts "\n#{@alerts[menu_input.to_i-1].name}".colorize(:color => :blue)
+        puts "\nAlert ##{menu_input}: #{@alerts[menu_input.to_i-1].name}".colorize(:color => :blue)
         puts "\nDescription:".colorize(:color => :blue)
         puts "#{@alerts[menu_input.to_i-1].description}"
         puts "\nInstructions:".colorize(:color => :blue) unless @alerts[menu_input.to_i-1].instructions == ""
@@ -130,7 +130,7 @@ class WeatherAlertMbj::CLI
   end
 
   def line_break
-    puts "\n------------------------------------------------------------"
+    puts "\n---------------------------------------------------------------------------"
   end
 
 end
