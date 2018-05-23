@@ -1,6 +1,6 @@
 class WeatherAlertMbj::Alert
 
-  attr_accessor :name, :date, :urgency, :status, :areas_affected, :state_url, :state, :alert_url, :description, :instructions
+  attr_accessor :name, :date, :urgency, :status, :areas_affected, :state_url, :state_code, :state_name :alert_url, :description, :instructions
 
   #@@all=[]
 
@@ -18,9 +18,10 @@ class WeatherAlertMbj::Alert
     #doc.css("event").each do |box|
     doc.css("entry").each do |box|
     #doc.css(".headline").each do |box|
-      #binding.pry
+      binding.pry
       new_alert = self.new
-      new_alert.state = input.upcase
+      new_alert.state_code = input.upcase
+      new_alert.state_name = doc.css("title").text.gsub("Current Watches, Warnings and Advisories for ","").gsub(" Issued by the National Weather ServiceThere are no active watches, warnings or advisories","")
       new_alert.state_url = url_holder
 
       #For states that currently do not have any active watches, warnings or advisories
@@ -115,21 +116,21 @@ class WeatherAlertMbj::Alert
     #web_scraper
   #end
 
-  def self.web_scraper
+  #def self.web_scraper
     #take the @url and scrape
 
-    doc = Nokogiri::HTML(open(@state_url))
+    #doc = Nokogiri::HTML(open(@state_url))
 
-    doc.css(".entry").each do |box|
-      @name = box.css("a").text
-      if box.css(".label").text.contains?("Urgency:")
-        @urgency = box.css("span").text
-      end
-    end
+    #doc.css(".entry").each do |box|
+      #@name = box.css("a").text
+      #if box.css(".label").text.contains?("Urgency:")
+        #@urgency = box.css("span").text
+      #end
+    #end
 
     #@@all << self.new
 
-  end
+  #end
 
 
 
