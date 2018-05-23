@@ -96,7 +96,7 @@ class WeatherAlertMbj::CLI
       #get_and_list_alerts
 
       line_break
-      puts "\nPlease enter the number of the alert for more details.".colorize(:color => :green)
+      puts "\nPlease enter a number (from 1 - #{@alerts.length}) of the alert for more details.".colorize(:color => :green)
       puts "  Or type 'List' to see a list of alerts."
       puts "  Or type 'Exit' to exit."
       menu_input = gets.strip.downcase
