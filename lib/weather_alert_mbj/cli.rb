@@ -34,7 +34,8 @@ class WeatherAlertMbj::CLI
       #if STATE_CODES.include?(input)
       if STATE_CODES.include?(@input)
 
-        puts "\nLoading... (It may take up to 1 minute to retrieve data.)"
+        puts "\nLoading data for #{@input.upcase}..."
+        puts "(It may take up to 1 minute to retrieve data.)"
 
         line_break
 
