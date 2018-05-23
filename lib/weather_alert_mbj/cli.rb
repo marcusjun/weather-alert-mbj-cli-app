@@ -128,7 +128,7 @@ class WeatherAlertMbj::CLI
           puts"#{@alerts[menu_input.to_i-1].alert_url}"
 
         elsif menu_input != "exit"
-          puts "\nPlease double check the number you entered.".colorize(:color => :light_white, :background => :red)
+          puts "\n  Please double check the number you entered.".colorize(:color => :light_white, :background => :red)
         end
       end
     end
@@ -142,7 +142,8 @@ class WeatherAlertMbj::CLI
   end
 
   def line_break
-    puts "\n---------------------------------------------------------------------------"
+    #puts "\n---------------------------------------------------------------------------".colorize(:color => :light_white)
+    puts "\n...........................................................................".colorize(:color => :light_white)
   end
 
 end
