@@ -22,9 +22,9 @@ class WeatherAlertMbj::CLI
 
     #while input.downcase != "exit"
     while @input.downcase != "exit"
-      puts "\nPlease enter the two-letter code for the state you wish to get weather alerts for.".colorize(:color => :green)
+      puts "\nPlease enter the code for the US state or territory you wish to get weather alerts for.".colorize(:color => :green)
       puts "  For example, CA = California and TX = Texas"
-      puts "  Or type 'Exit' to exit."
+      puts "  Or type 'Exit' to quit Weather Alert."
 
       #input = gets.strip.downcase
       @input = gets.strip.downcase
@@ -104,7 +104,7 @@ class WeatherAlertMbj::CLI
         line_break
         puts "\nPlease enter a number (from 1 - #{@alerts.length}) of the alert for more details.".colorize(:color => :green)
         puts "  Or type 'List' to see a list of alerts."
-        puts "  Or type 'Exit' to exit."
+        puts "  Or type 'Exit' to return to the previous menu."
         menu_input = gets.strip.downcase
 
         line_break
