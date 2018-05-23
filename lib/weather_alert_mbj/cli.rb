@@ -70,7 +70,10 @@ class WeatherAlertMbj::CLI
 
       if alert.name == "There are no active watches, warnings or advisories"
         #puts "\nAs of #{Time.now.asctime}: #{alert.name} for #{alert.state.upcase}.".colorize(:color => :blue)
-        puts "\nCurrently: #{alert.name} for #{alert.state.upcase}.".colorize(:color => :blue)
+        puts "\n  Currently, #{alert.name.downcase} for #{alert.state.upcase}.".colorize(:color => :blue)
+        #line_break
+
+        #get_state_and_its_alerts
 
       else
         #puts "  #{index+1}: #{alert.name} (#{alert.state.upcase})"
@@ -97,9 +100,9 @@ class WeatherAlertMbj::CLI
       #get_and_list_alerts
 
       if @alerts[0].name == "There are no active watches, warnings or advisories"
-        line_break
-        puts "\nType 'Exit' to return to the previous menu.".colorize(:color => :green)
-        menu_input = gets.strip.downcase
+        #line_break
+        #puts "\nType 'Exit' to return to the previous menu.".colorize(:color => :green)
+        menu_input = "exit"#gets.strip.downcase
         line_break
       else
         line_break
