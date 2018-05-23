@@ -106,7 +106,7 @@ class WeatherAlertMbj::CLI
         display_alerts
 
       #if menu_input.to_i <= @alerts.length
-      elsif menu_input.to_i <= @alerts.length
+    elsif menu_input.to_i <= @alerts.length && menu_input.to_i > 0
         puts "\n#{@alerts[menu_input.to_i-1].name}".colorize(:color => :blue)
         puts "\nDescription:".colorize(:color => :blue)
         puts "#{@alerts[menu_input.to_i-1].description}"
