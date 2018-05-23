@@ -95,29 +95,37 @@ class WeatherAlertMbj::CLI
     while menu_input.downcase != "exit"
       #get_and_list_alerts
 
-      line_break
-      puts "\nPlease enter a number (from 1 - #{@alerts.length}) of the alert for more details.".colorize(:color => :green)
-      puts "  Or type 'List' to see a list of alerts."
-      puts "  Or type 'Exit' to exit."
-      menu_input = gets.strip.downcase
+      if @alerts[0].name == "There are no active watches, warnings or advisories"
+        line_break
+        puts "\nType 'Exit' to return to the previous menu.".colorize(:color => :green)
+        menu_input = gets.strip.downcase
+        line_break
+      else
+        line_break
+        puts "\nPlease enter a number (from 1 - #{@alerts.length}) of the alert for more details.".colorize(:color => :green)
+        puts "  Or type 'List' to see a list of alerts."
+        puts "  Or type 'Exit' to exit."
+        menu_input = gets.strip.downcase
 
-      line_break
+        line_break
 
-      if menu_input.downcase == "list"
-        display_alerts
 
-      #if menu_input.to_i <= @alerts.length
-    elsif menu_input.to_i <= @alerts.length && menu_input.to_i > 0
-        puts "\nAlert ##{menu_input}: #{@alerts[menu_input.to_i-1].name} (#{@alerts[menu_input.to_i-1].state.upcase})".colorize(:color => :blue)
-        puts "\nDescription:".colorize(:color => :blue)
-        puts "#{@alerts[menu_input.to_i-1].description}"
-        puts "\nInstructions:".colorize(:color => :blue) unless @alerts[menu_input.to_i-1].instructions == ""
-        puts "#{@alerts[menu_input.to_i-1].instructions}" unless @alerts[menu_input.to_i-1].instructions == ""
-        puts "\nFor more info, please see".colorize(:color => :blue)
-        puts"#{@alerts[menu_input.to_i-1].alert_url}"
+        if menu_input.downcase == "list"
+          display_alerts
 
-      elsif menu_input != "exit"
-        puts "\nPlease double check the number you entered.".colorize(:color => :light_white, :background => :red)
+        #if menu_input.to_i <= @alerts.length
+        elsif menu_input.to_i <= @alerts.length && menu_input.to_i > 0
+          puts "\nAlert ##{menu_input}: #{@alerts[menu_input.to_i-1].name} (#{@alerts[menu_input.to_i-1].state.upcase})".colorize(:color => :blue)
+          puts "\nDescription:".colorize(:color => :blue)
+          puts "#{@alerts[menu_input.to_i-1].description}"
+          puts "\nInstructions:".colorize(:color => :blue) unless @alerts[menu_input.to_i-1].instructions == ""
+          puts "#{@alerts[menu_input.to_i-1].instructions}" unless @alerts[menu_input.to_i-1].instructions == ""
+          puts "\nFor more info, please see".colorize(:color => :blue)
+          puts"#{@alerts[menu_input.to_i-1].alert_url}"
+
+        elsif menu_input != "exit"
+          puts "\nPlease double check the number you entered.".colorize(:color => :light_white, :background => :red)
+        end
       end
     end
 
