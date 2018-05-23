@@ -34,7 +34,7 @@ class WeatherAlertMbj::CLI
       #if STATE_CODES.include?(input)
       if STATE_CODES.include?(@input)
 
-        puts "\nLoading... (This may take up to 1 minute to retrieve data.)"
+        puts "\nLoading... (It may take up to 1 minute to retrieve data.)"
 
         line_break
 
@@ -64,14 +64,20 @@ class WeatherAlertMbj::CLI
     #puts @alerts
 
     @alerts.each_with_index do |alert,index|
-      #puts "  #{index+1}: #{alert.name} (#{alert.state.upcase})"
-      puts "\nAlert ##{index+1}: #{alert.name} (#{alert.state.upcase})".colorize(:color => :blue)
-      if alert.urgency.downcase == "immediate"
-        puts "  Urgency: #{alert.urgency}".colorize(:color => :red)#, :background => :light_white)
+
+      if alert.name == "There are no active watches, warnings or advisories"
+        puts "\n#{alert.name} for #{alert.state.upcase}.".colorize(:color => :blue)
+
       else
-        puts "  Urgency: #{alert.urgency}"
+        #puts "  #{index+1}: #{alert.name} (#{alert.state.upcase})"
+        puts "\nAlert ##{index+1}: #{alert.name} (#{alert.state.upcase})".colorize(:color => :blue)
+        if alert.urgency.downcase == "immediate"
+          puts "  Urgency: #{alert.urgency}".colorize(:color => :red)#, :background => :light_white)
+        else
+          puts "  Urgency: #{alert.urgency}"
+        end
+        puts "  Areas: #{alert.areas_affected}\n  Date: #{alert.date}"
       end
-      puts "  Areas: #{alert.areas_affected}\n  Date: #{alert.date}"
     end
 
     #get_and_display_alert_details
@@ -121,7 +127,7 @@ class WeatherAlertMbj::CLI
   end
 
   def line_break
-    puts "\n-------------------------------------------------------"
+    puts "\n------------------------------------------------------------"
   end
 
 end
