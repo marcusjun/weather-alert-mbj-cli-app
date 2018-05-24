@@ -2,12 +2,75 @@ class WeatherAlertMbj::CLI
 
   attr_accessor :input, :alerts
 
-  STATE_CODES = ["al", "ak", "as", "az", "ar", "ca", "co", "ct", "dc", "de", "fl", "ga", "gu", "hi", "id", "il", "in", "ia", "ks", "ky", "la", "me", "md", "ma", "mi", "mn", "mp", "ms", "mo", "mt", "ne", "nv", "nh", "nj", "nm", "ny", "nc", "nd", "oh", "ok", "or", "pa", "pr", "ri", "sc", "sd", "tn", "tx", "um", "us", "ut", "vt", "va", "vi", "wa", "wv", "wi", "wy"]
+  #STATE_CODES = ["al", "ak", "as", "az", "ar", "ca", "co", "ct", "dc", "de", "fl", "ga", "gu", "hi", "id", "il", "in", "ia", "ks", "ky", "la", "me", "md", "ma", "mi", "mn", "mp", "ms", "mo", "mt", "ne", "nv", "nh", "nj", "nm", "ny", "nc", "nd", "oh", "ok", "or", "pa", "pr", "ri", "sc", "sd", "tn", "tx", "um", "us", "ut", "vt", "va", "vi", "wa", "wv", "wi", "wy"]
+
+  STATE_CODES={
+    "al" => "Alabama",
+    "ak" => "Alaska",
+    "az" => "Arizona",
+    "ar" => "Arkansas",
+    "ca" => "California",
+    "co" => "Colorado",
+    "ct" => "Connecticut",
+    "de" => "Delware",
+    "dc" => "District of Columbia",
+    "fl" => "Florida",
+    "ga" => "Georgia",
+    "hi" => "Hawaii",
+    "id" => "Idaho",
+    "il" => "Illinois",
+    "in" => "Indiana",
+    "ia" => "Iowa",
+    "ks" => "Kansas",
+    "ky" => "Kentucky",
+    "la" => "Louisiana",
+    "me" => "Maine",
+    "md" => "Maryland",
+    "ma" => "Massachusetts",
+    "mi" => "Michigan",
+    "mn" => "Minnesota",
+    "ms" => "Mississippi",
+    "mo" => "Missouri",
+    "mt" => "Montana",
+    "ne" => "Nebraska",
+    "nv" => "Nevada",
+    "nh" => "New Hampshire",
+    "nj" => "New Jersey",
+    "nm" => "New Mexico",
+    "ny" => "New York",
+    "nc" => "North Carolina",
+    "nd" => "North Dakota",
+    "oh" => "Ohio",
+    "ok" => "Oklahoma",
+    "or" => "Oregon",
+    "pa" => "Pennsylvania",
+    "ri" => "Rhode Island",
+    "sc" => "South Carolina",
+    "sd" => "South Dakota",
+    "tn" => "Tennessee",
+    "tx" => "Texas",
+    "us" => "United States",
+    "ut" => "Utah",
+    "vt" => "Vermont",
+    "va" => "Virginia",
+    "wa" => "Washington",
+    "wv" => "West Virginia",
+    "wi" => "Wisconsin",
+    "wy" => "Wyoming",
+    #US territories and other
+    "as" => "American Samoa",
+    "gu" => "Guam",
+    "mp" => "Northern Mariana Islands",
+    "pr" => "Puerto Rico",
+    "vi" => "U.S. Virgin Islands",
+    "um" => "U.S. Minor Outlying Islands"
+  }
 
   #Use hash for state codes, instead?
   #STATE_CODES = [{"al" => "alabama"},{"ak" => "alaska"},{"az" => "arizona"}]
 
   def call
+    line_break
     puts "\nWelcome to Weather Alert.".colorize(:color => :blue)#.colorize(:color => :light_white)#, :background => :light_white)
     get_state_and_its_alerts
 
@@ -142,8 +205,8 @@ class WeatherAlertMbj::CLI
   end
 
   def line_break
-    #puts "\n---------------------------------------------------------------------------".colorize(:color => :light_white)
-    puts "\n...........................................................................".colorize(:color => :light_white)
+    puts "\n---------------------------------------------------------------------------".colorize(:color => :light_white)
+    #puts "\n...........................................................................".colorize(:color => :light_white)
   end
 
 end
