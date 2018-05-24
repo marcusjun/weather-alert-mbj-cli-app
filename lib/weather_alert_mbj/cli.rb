@@ -95,9 +95,11 @@ class WeatherAlertMbj::CLI
       #line_break
 
       #if STATE_CODES.include?(input)
-      if STATE_CODES.include?(@input)
+      #if STATE_CODES.include?(@input)
+      if STATE_CODES.keys.include?(@input)
 
-        puts "\nLoading data for " + "#{@input.upcase}".colorize(:color => :blue) + " ..."
+        #puts "\nLoading data for " + "#{@input.upcase}".colorize(:color => :blue) + " ..."
+        puts "\nLoading data for " + "#{STATE_CODES[@input]}".colorize(:color => :blue) + " ..."
         puts "(It may take up to 1 minute to retrieve data.)"
 
         line_break
@@ -133,14 +135,17 @@ class WeatherAlertMbj::CLI
 
       if alert.name == "There are no active watches, warnings or advisories"
         #puts "\nAs of #{Time.now.asctime}: #{alert.name} for #{alert.state.upcase}.".colorize(:color => :blue)
-        puts "\n  Currently, #{alert.name.downcase} for #{alert.state.upcase}.".colorize(:color => :blue)
+        #puts "\n  Currently, #{alert.name.downcase} for #{alert.state.upcase}.".colorize(:color => :blue)
+        puts "\n  Currently, #{alert.name.downcase} for #{STATE_CODES[alert.state]}.".colorize(:color => :blue)
         #line_break
 
         #get_state_and_its_alerts
 
       else
         #puts "  #{index+1}: #{alert.name} (#{alert.state.upcase})"
-        puts "\nAlert ##{index+1}: #{alert.name} (#{alert.state.upcase})".colorize(:color => :blue)
+        #puts "\nAlert ##{index+1}: #{alert.name} (#{alert.state.upcase})".colorize(:color => :blue)
+        #binding.pry
+        puts "\nAlert ##{index+1}: #{alert.name} (#{STATE_CODES[alert.state]})".colorize(:color => :blue)
         if alert.urgency.downcase == "immediate"
           puts "  Urgency: #{alert.urgency}".colorize(:color => :red)#, :background => :light_white)
         else
@@ -182,7 +187,9 @@ class WeatherAlertMbj::CLI
 
         #if menu_input.to_i <= @alerts.length
         elsif menu_input.to_i <= @alerts.length && menu_input.to_i > 0
-          puts "\nAlert ##{menu_input}: #{@alerts[menu_input.to_i-1].name} (#{@alerts[menu_input.to_i-1].state.upcase})".colorize(:color => :blue)
+          #puts "\nAlert ##{menu_input}: #{@alerts[menu_input.to_i-1].name} (#{@alerts[menu_input.to_i-1].state.upcase})".colorize(:color => :blue)
+          #binding.pry
+          puts "\nAlert ##{menu_input}: #{@alerts[menu_input.to_i-1].name} (#{STATE_CODES[@alerts[menu_input.to_i-1].state]})".colorize(:color => :blue)
           puts "\nDescription:".colorize(:color => :blue)
           puts "#{@alerts[menu_input.to_i-1].description}"
           puts "\nInstructions:".colorize(:color => :blue) unless @alerts[menu_input.to_i-1].instructions == ""
