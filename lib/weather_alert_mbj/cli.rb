@@ -66,9 +66,6 @@ class WeatherAlertMbj::CLI
     "um" => "U.S. Minor Outlying Islands"
   }
 
-  #Use hash for state codes, instead?
-  #STATE_CODES = [{"al" => "alabama"},{"ak" => "alaska"},{"az" => "arizona"}]
-
   def call
     line_break
     puts "\nWelcome to Weather Alert.".colorize(:color => :blue)#.colorize(:color => :light_white)#, :background => :light_white)
@@ -96,7 +93,12 @@ class WeatherAlertMbj::CLI
 
       #if STATE_CODES.include?(input)
       #if STATE_CODES.include?(@input)
-      if STATE_CODES.keys.include?(@input)
+      if STATE_CODES.keys.include?(@input) || STATE_CODES.values.include?(@input.capitalize)
+
+        if STATE_CODES.values.include?(@input.capitalize)
+          @input = STATE_CODES.key(@input.capitalize)
+          #binding.pry
+        end
 
         #puts "\nLoading data for " + "#{@input.upcase}".colorize(:color => :blue) + " ..."
         puts "\nLoading data for " + "#{STATE_CODES[@input]}".colorize(:color => :blue) + " ..."
