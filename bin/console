@@ -11,5 +11,7 @@ require "weather_alert_mbj"
 # Pry.start
 
 require "irb"
+
+puts "Welcome to the Weather Alert Sandbox".colorize(:color => :blue, :background => :light_white)
+
 IRB.start(__FILE__)
-#IRB.start
