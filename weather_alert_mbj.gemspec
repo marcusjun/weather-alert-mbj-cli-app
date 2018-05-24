@@ -11,7 +11,7 @@ Gem::Specification.new do |spec|
 
   spec.summary       = "This gem uses webscraping to get National Weather Service weather alerts by state. See https://alerts.weather.gov/"
     #%q{TODO: Write a short summary, because RubyGems requires one.}
-  spec.description   = "This gem uses webscraping to get National Weather Service weather alerts by state. See https://alerts.weather.gov/"
+  spec.description   = "The user enters a US state or territory and the gem returns a list of weather alerts. Then user can choose a weather alert to see more details."
     #%q{TODO: Write a longer description or delete this line.}
   spec.homepage      = "https://github.com/marcusjun/weather-alert-mbj-cli-app"
     #"TODO: Put your gem's website or public repo URL here."
