@@ -9,9 +9,12 @@ Gem::Specification.new do |spec|
   spec.authors       = ["'Marcus Jun'"]
   spec.email         = ["'mjun@calstate.edu'"]
 
-  spec.summary       = %q{TODO: Write a short summary, because RubyGems requires one.}
-  spec.description   = %q{TODO: Write a longer description or delete this line.}
-  spec.homepage      = "TODO: Put your gem's website or public repo URL here."
+  spec.summary       = "This gem uses webscraping to get National Weather Service weather alerts by state. See https://alerts.weather.gov/"
+    #%q{TODO: Write a short summary, because RubyGems requires one.}
+  spec.description   = "This gem uses webscraping to get National Weather Service weather alerts by state. See https://alerts.weather.gov/"
+    #%q{TODO: Write a longer description or delete this line.}
+  spec.homepage      = "https://github.com/marcusjun/weather-alert-mbj-cli-app"
+    #"TODO: Put your gem's website or public repo URL here."
   spec.license       = "MIT"
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
@@ -34,7 +37,8 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rake", "~> 10.0"
 
   # My modifications below
-  #spec.add_development_dependency "pry"
-  #spec.add_dependency "nokogiri"
+  spec.add_development_dependency "pry"
+  spec.add_dependency "nokogiri"
+  spec.add_dependency "colorize"
 
 end
