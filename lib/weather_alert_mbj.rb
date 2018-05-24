@@ -9,5 +9,6 @@ require_relative "./weather_alert_mbj/version"
 #module WeatherAlertMbj
   # Your code goes here...
 #end
+
 require_relative './weather_alert_mbj/alert'
 require_relative './weather_alert_mbj/cli'
