@@ -96,10 +96,16 @@ class WeatherAlertMbj::CLI
 
       #if STATE_CODES.include?(input)
       #if STATE_CODES.include?(@input)
-      if STATE_CODES.keys.include?(@input) ## || STATE_CODES.values.include?(@input)
+      if STATE_CODES.keys.include?(@input) || STATE_CODES.any? {|key,value| value.downcase == @input}
 
         ##if STATE_CODES.values.include?(@input)
-          ##@input = STATE_CODES.key(@input)
+        if STATE_CODES.any? {|key,value| value.downcase == @input}
+          STATE_CODES.each do |key,value|
+            if value.downcase == @input
+              @input = STATE_CODES.key(value)
+            end
+          end
+        end
           #binding.pry
         ##end
 
