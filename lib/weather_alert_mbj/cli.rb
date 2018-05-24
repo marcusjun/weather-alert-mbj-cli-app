@@ -66,6 +66,7 @@ class WeatherAlertMbj::CLI
     "um" => "U.S. Minor Outlying Islands"
   }
 
+
   def call
     line_break
     puts "\nWelcome to Weather Alert.".colorize(:color => :blue)#.colorize(:color => :light_white)#, :background => :light_white)
@@ -89,16 +90,18 @@ class WeatherAlertMbj::CLI
       #input = gets.strip.downcase
       @input = gets.strip.downcase
 
+      #binding.pry
+
       #line_break
 
       #if STATE_CODES.include?(input)
       #if STATE_CODES.include?(@input)
-      if STATE_CODES.keys.include?(@input) || STATE_CODES.values.include?(@input.capitalize)
+      if STATE_CODES.keys.include?(@input) ## || STATE_CODES.values.include?(@input)
 
-        if STATE_CODES.values.include?(@input.capitalize)
-          @input = STATE_CODES.key(@input.capitalize)
+        ##if STATE_CODES.values.include?(@input)
+          ##@input = STATE_CODES.key(@input)
           #binding.pry
-        end
+        ##end
 
         #puts "\nLoading data for " + "#{@input.upcase}".colorize(:color => :blue) + " ..."
         puts "\nLoading data for " + "#{STATE_CODES[@input]}".colorize(:color => :blue) + " ..."
