@@ -18,7 +18,8 @@ class WeatherAlertMbj::Alert
     #doc.css(".headline").each do |box|
       #binding.pry
       new_alert = self.new
-      new_alert.state = input.upcase
+      #new_alert.state = input.upcase
+      new_alert.state = input
       #new_alert.state_name = doc.css("title").text.gsub("Current Watches, Warnings and Advisories for ","").gsub(" Issued by the National Weather ServiceThere are no active watches, warnings or advisories","")
       new_alert.state_url = url_holder
 
