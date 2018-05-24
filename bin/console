@@ -1,7 +1,10 @@
 #!/usr/bin/env ruby
 
 require "bundler/setup"
-require "weather_alert_mbj"
+
+#Both require statements below work
+#require "weather_alert_mbj"
+require_relative '../lib/weather_alert_mbj'
 
 # You can add fixtures and/or initialization code here to make experimenting
 # with your gem easier. You can also use a different console, if you like.
@@ -12,6 +15,6 @@ require "weather_alert_mbj"
 
 require "irb"
 
-puts "Welcome to the Weather Alert Sandbox".colorize(:color => :blue, :background => :light_white)
+puts "  Welcome to the Weather Alert Sandbox  ".colorize(:color => :blue, :background => :light_white)
 
 IRB.start(__FILE__)
