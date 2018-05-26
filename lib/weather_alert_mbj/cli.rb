@@ -70,6 +70,7 @@ class WeatherAlertMbj::CLI
   def call
     line_break
     puts "\nWelcome to Weather Alert.".colorize(:color => :blue)#.colorize(:color => :light_white)#, :background => :light_white)
+
     get_state_and_its_alerts
 
     goodbye
@@ -206,6 +207,7 @@ class WeatherAlertMbj::CLI
           puts "\nInstructions:".colorize(:color => :blue) unless @alerts[menu_input.to_i-1].instructions == ""
           puts "#{@alerts[menu_input.to_i-1].instructions}" unless @alerts[menu_input.to_i-1].instructions == ""
           puts "\nFor more info, please see".colorize(:color => :blue)
+          puts"#{@alerts[menu_input.to_i-1].state_url}"
           puts"#{@alerts[menu_input.to_i-1].alert_url}"
 
         elsif menu_input != "exit"
