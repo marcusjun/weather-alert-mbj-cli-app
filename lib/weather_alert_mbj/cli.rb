@@ -87,11 +87,7 @@ class WeatherAlertMbj::CLI
         #If user inputs full name of state (California) rather than its code (CA)
         #then the following code changes input to the state code.
         if STATE_CODES.any? {|key,value| value.downcase == input}
-          STATE_CODES.each do |key,value|
-            if value.downcase == input
-              input = STATE_CODES.key(value)
-            end
-          end
+          STATE_CODES.each {|key,value| input = STATE_CODES.key(value) if value.downcase == input}
         end
 
         puts "\nLoading data for " + "#{STATE_CODES[input]}".colorize(:color => :blue) + " ..."
@@ -109,28 +105,6 @@ class WeatherAlertMbj::CLI
         line_break
       end
 
-    end
-  end
-
-  def display_alerts#(input)
-
-    @alerts.each_with_index do |alert,index|
-
-      if alert.name == "There are no active watches, warnings or advisories"
-        puts "\n  Currently, #{alert.name.downcase} for #{STATE_CODES[alert.state]}.".colorize(:color => :blue)
-
-      else
-        puts "\nAlert ##{index+1}: #{alert.name} (#{STATE_CODES[alert.state]})".colorize(:color => :blue)
-
-        #Alerts with an "immediate" urgency have the text, "immediate" in red.
-        if alert.urgency.downcase == "immediate"
-          puts "  Urgency: #{alert.urgency}".colorize(:color => :red)
-        else
-          puts "  Urgency: #{alert.urgency}"
-        end
-
-        puts "  Areas: #{alert.areas_affected}\n  Date: #{alert.date}"
-      end
     end
   end
 
@@ -176,8 +150,29 @@ class WeatherAlertMbj::CLI
         end
       end
     end
+  end
 
 
+  def display_alerts
+
+    @alerts.each_with_index do |alert,index|
+
+      if alert.name == "There are no active watches, warnings or advisories"
+        puts "\n  Currently, #{alert.name.downcase} for #{STATE_CODES[alert.state]}.".colorize(:color => :blue)
+
+      else
+        puts "\nAlert ##{index+1}: #{alert.name} (#{STATE_CODES[alert.state]})".colorize(:color => :blue)
+
+        #Alerts with an "immediate" urgency have the text, "immediate" in red.
+        if alert.urgency.downcase == "immediate"
+          puts "  Urgency: #{alert.urgency}".colorize(:color => :red)
+        else
+          puts "  Urgency: #{alert.urgency}"
+        end
+
+        puts "  Areas: #{alert.areas_affected}\n  Date: #{alert.date}"
+      end
+    end
   end
 
   def goodbye
@@ -188,5 +183,4 @@ class WeatherAlertMbj::CLI
   def line_break
     puts "\n-------------------------------------------------------------------------------------".colorize(:color => :light_white)
   end
-
 end
