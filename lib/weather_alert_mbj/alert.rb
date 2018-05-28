@@ -4,13 +4,11 @@ class WeatherAlertMbj::Alert
 
   def self.create_alerts(input)
 
-    alerts_by_state =[]
-
     url_holder = "https://alerts.weather.gov/cap/#{input}.php?x=1"
 
     doc = Nokogiri::HTML(open(url_holder))
 
-    doc.css("entry").each do |box|
+    doc.css("entry").collect do |box|
       new_alert = self.new
       new_alert.state = input
       new_alert.state_url = url_holder
@@ -38,14 +36,10 @@ class WeatherAlertMbj::Alert
         desc_doc = Nokogiri::HTML(open(new_alert.alert_url))
         new_alert.description = desc_doc.css("description").text
         new_alert.instructions = desc_doc.css("instruction").text
-
       end
 
-      alerts_by_state << new_alert
+      new_alert
     end
-
-    alerts_by_state
-
   end
 
   #def open_in_browser
