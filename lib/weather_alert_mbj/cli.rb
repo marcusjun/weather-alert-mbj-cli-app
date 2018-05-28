@@ -1,6 +1,6 @@
 class WeatherAlertMbj::CLI
 
-  attr_accessor :input, :alerts
+  attr_accessor :alerts #:input
 
   #STATE_CODES = ["al", "ak", "as", "az", "ar", "ca", "co", "ct", "dc", "de", "fl", "ga", "gu", "hi", "id", "il", "in", "ia", "ks", "ky", "la", "me", "md", "ma", "mi", "mn", "mp", "ms", "mo", "mt", "ne", "nv", "nh", "nj", "nm", "ny", "nc", "nd", "oh", "ok", "or", "pa", "pr", "ri", "sc", "sd", "tn", "tx", "um", "us", "ut", "vt", "va", "vi", "wa", "wv", "wi", "wy"]
 
@@ -80,16 +80,16 @@ class WeatherAlertMbj::CLI
   def get_state_and_its_alerts
 
     #input = ""
-    @input = ""
+    input = ""
 
     #while input.downcase != "exit"
-    while @input.downcase != "exit"
+    while input.downcase != "exit"
       puts "\nPlease enter the two-letter code for the US state or territory\nyou wish to get weather alerts for.".colorize(:color => :green)
       puts "  For example, CA = California and TX = Texas"
       puts "  Or type 'Exit' to quit Weather Alert."
 
       #input = gets.strip.downcase
-      @input = gets.strip.downcase
+      input = gets.strip.downcase
 
       #binding.pry
 
@@ -97,13 +97,13 @@ class WeatherAlertMbj::CLI
 
       #if STATE_CODES.include?(input)
       #if STATE_CODES.include?(@input)
-      if STATE_CODES.keys.include?(@input) || STATE_CODES.any? {|key,value| value.downcase == @input}
+      if STATE_CODES.keys.include?(input) || STATE_CODES.any? {|key,value| value.downcase == input}
 
         ##if STATE_CODES.values.include?(@input)
-        if STATE_CODES.any? {|key,value| value.downcase == @input}
+        if STATE_CODES.any? {|key,value| value.downcase == input}
           STATE_CODES.each do |key,value|
-            if value.downcase == @input
-              @input = STATE_CODES.key(value)
+            if value.downcase == input
+              input = STATE_CODES.key(value)
             end
           end
         end
@@ -111,12 +111,12 @@ class WeatherAlertMbj::CLI
         ##end
 
         #puts "\nLoading data for " + "#{@input.upcase}".colorize(:color => :blue) + " ..."
-        puts "\nLoading data for " + "#{STATE_CODES[@input]}".colorize(:color => :blue) + " ..."
+        puts "\nLoading data for " + "#{STATE_CODES[input]}".colorize(:color => :blue) + " ..."
         puts "(It may take up to 1 minute to retrieve data.)"
 
         line_break
 
-        @alerts = WeatherAlertMbj::Alert.create_alerts(@input)
+        @alerts = WeatherAlertMbj::Alert.create_alerts(input)
 
         get_and_display_alert_details
 
