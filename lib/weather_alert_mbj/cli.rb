@@ -82,6 +82,7 @@ class WeatherAlertMbj::CLI
 
       input = gets.strip.downcase
 
+      #Conditional statement that ensures user input a valid state code or valid state name
       if STATE_CODES.keys.include?(input) || STATE_CODES.any? {|key,value| value.downcase == input}
 
         #If user inputs full name of state (California) rather than its code (CA)
@@ -120,11 +121,12 @@ class WeatherAlertMbj::CLI
         line_break
       else
         line_break
-        puts "\nPlease enter a number (from 1 - #{@alerts.length}) of the alert for more details.".colorize(:color => :green)
+        puts "\nPlease enter the number (from 1 - #{@alerts.length}) of the alert for more details.".colorize(:color => :green)
         puts "  Or type 'List' to see a list of alerts."
         puts "  Or type 'Exit' to return to the previous menu."
-        menu_input = gets.strip.downcase
         line_break
+
+        menu_input = gets.strip.downcase
 
         if menu_input.downcase == "list"
           display_alerts
@@ -134,10 +136,13 @@ class WeatherAlertMbj::CLI
           #Displays the details of an alert including its
           #name, state, description, instructions and urls.
           puts "\nAlert ##{menu_input}: #{@alerts[menu_input.to_i-1].name} (#{STATE_CODES[@alerts[menu_input.to_i-1].state]})".colorize(:color => :blue)
+
           puts "\nDescription:".colorize(:color => :blue)
           puts "#{@alerts[menu_input.to_i-1].description}"
+
           puts "\nInstructions:".colorize(:color => :blue) unless @alerts[menu_input.to_i-1].instructions == ""
           puts "#{@alerts[menu_input.to_i-1].instructions}" unless @alerts[menu_input.to_i-1].instructions == ""
+
           puts "\nFor more info, please see".colorize(:color => :blue)
           puts"#{@alerts[menu_input.to_i-1].state_url}"
           puts"#{@alerts[menu_input.to_i-1].alert_url}"
@@ -167,7 +172,8 @@ class WeatherAlertMbj::CLI
           puts "  Urgency: #{alert.urgency}"
         end
 
-        puts "  Areas: #{alert.areas_affected}\n  Date: #{alert.date}"
+        puts "  Areas: #{alert.areas_affected}"
+        puts "  Date: #{alert.date}"
       end
     end
   end
