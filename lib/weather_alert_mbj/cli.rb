@@ -1,6 +1,6 @@
 class WeatherAlertMbj::CLI
 
-  attr_accessor :alerts #:input
+  #attr_accessor :alerts #:input
 
   #STATE_CODES = ["al", "ak", "as", "az", "ar", "ca", "co", "ct", "dc", "de", "fl", "ga", "gu", "hi", "id", "il", "in", "ia", "ks", "ky", "la", "me", "md", "ma", "mi", "mn", "mp", "ms", "mo", "mt", "ne", "nv", "nh", "nj", "nm", "ny", "nc", "nd", "oh", "ok", "or", "pa", "pr", "ri", "sc", "sd", "tn", "tx", "um", "us", "ut", "vt", "va", "vi", "wa", "wv", "wi", "wy"]
 
