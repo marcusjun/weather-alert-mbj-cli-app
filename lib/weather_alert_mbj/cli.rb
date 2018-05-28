@@ -86,13 +86,10 @@ class WeatherAlertMbj::CLI
 
         #If user inputs full name of state (California) rather than its code (CA)
         #then the following code changes input to the state code.
-        if STATE_CODES.any? {|key,value| value.downcase == input}
-          STATE_CODES.each {|key,value| input = STATE_CODES.key(value) if value.downcase == input}
-        end
+        STATE_CODES.each {|key,value| input = STATE_CODES.key(value) if value.downcase == input}
 
         puts "\nLoading data for " + "#{STATE_CODES[input]}".colorize(:color => :blue) + " ..."
         puts "(It may take up to 1 minute to retrieve data.)"
-
         line_break
 
         @alerts = WeatherAlertMbj::Alert.create_alerts(input)
