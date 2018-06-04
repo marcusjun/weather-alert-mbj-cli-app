@@ -33,9 +33,9 @@ class WeatherAlertMbj::Alert
         new_alert.date = box.css("title").text.partition("issued")[-1].lstrip!.gsub(" by NWS","")
 
         #webscraping the alert_url for more details
-        desc_doc = Nokogiri::HTML(open(new_alert.alert_url))
-        new_alert.description = desc_doc.css("description").text
-        new_alert.instructions = desc_doc.css("instruction").text
+        alert_details = Nokogiri::HTML(open(new_alert.alert_url))
+        new_alert.description = alert_details.css("description").text
+        new_alert.instructions = alert_details.css("instruction").text
       end
 
       new_alert
