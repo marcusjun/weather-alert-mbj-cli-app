@@ -99,7 +99,7 @@ class WeatherAlertMbj::CLI
 
       elsif state_input.downcase != "exit"
         line_break
-        puts "\nPlease double check the code you entered.".colorize(:color => :light_white, :background => :red)#(:color => :red)
+        puts "\n  Please double check the code you entered.".colorize(:color => :light_white, :background => :red)#(:color => :red)
         line_break
       end
 
