@@ -93,7 +93,7 @@ class WeatherAlertMbj::CLI
         puts "(It may take up to 1 minute to retrieve data.)"
         line_break
 
-        @alerts = WeatherAlertMbj::Alert.create_alerts(state_input)
+        @state_alerts = WeatherAlertMbj::Alert.create_alerts(state_input)
 
         get_and_display_alert_details
 
@@ -113,7 +113,7 @@ class WeatherAlertMbj::CLI
 
     while menu_input.downcase != "exit"
 
-      if @alerts[0].name == "There are no active watches, warnings or advisories"
+      if @state_alerts[0].name == "There are no active watches, warnings or advisories"
 
         #If a state has no weather alerts, then menu_input is set to "exit"
         #because there are no alerts to get more details on.
@@ -121,7 +121,7 @@ class WeatherAlertMbj::CLI
         line_break
       else
         line_break
-        puts "\nPlease enter the number (from 1 - #{@alerts.length}) of the alert for more details.".colorize(:color => :green)
+        puts "\nPlease enter the number (from 1 - #{@state_alerts.length}) of the alert for more details.".colorize(:color => :green)
         puts "  Or type 'List' to see a list of alerts."
         puts "  Or type 'Exit' to return to the previous menu."
         line_break
@@ -131,21 +131,21 @@ class WeatherAlertMbj::CLI
         if menu_input.downcase == "list"
           display_alerts
 
-        elsif menu_input.to_i <= @alerts.length && menu_input.to_i > 0
+        elsif menu_input.to_i <= @state_alerts.length && menu_input.to_i > 0
 
           #Displays the details of an alert including its
           #name, state, description, instructions and urls.
-          puts "\nAlert ##{menu_input}: #{@alerts[menu_input.to_i-1].name} (#{STATE_CODES[@alerts[menu_input.to_i-1].state]})".colorize(:color => :blue)
+          puts "\nAlert ##{menu_input}: #{@state_alerts[menu_input.to_i-1].name} (#{STATE_CODES[@state_alerts[menu_input.to_i-1].state]})".colorize(:color => :blue)
 
           puts "\nDescription:".colorize(:color => :blue)
-          puts "#{@alerts[menu_input.to_i-1].description}"
+          puts "#{@state_alerts[menu_input.to_i-1].description}"
 
-          puts "\nInstructions:".colorize(:color => :blue) unless @alerts[menu_input.to_i-1].instructions == ""
-          puts "#{@alerts[menu_input.to_i-1].instructions}" unless @alerts[menu_input.to_i-1].instructions == ""
+          puts "\nInstructions:".colorize(:color => :blue) unless @state_alerts[menu_input.to_i-1].instructions == ""
+          puts "#{@state_alerts[menu_input.to_i-1].instructions}" unless @state_alerts[menu_input.to_i-1].instructions == ""
 
           puts "\nFor more info, please see".colorize(:color => :blue)
-          puts"#{@alerts[menu_input.to_i-1].state_url}"
-          puts"#{@alerts[menu_input.to_i-1].alert_url}"
+          puts"#{@state_alerts[menu_input.to_i-1].state_url}"
+          puts"#{@state_alerts[menu_input.to_i-1].alert_url}"
 
         elsif menu_input != "exit"
           puts "\n  Please double check the number you entered.".colorize(:color => :light_white, :background => :red)
@@ -157,7 +157,7 @@ class WeatherAlertMbj::CLI
 
   def display_alerts
 
-    @alerts.each_with_index do |alert,index|
+    @state_alerts.each_with_index do |alert,index|
 
       if alert.name == "There are no active watches, warnings or advisories"
         puts "\n  Currently, #{alert.name.downcase} for #{STATE_CODES[alert.state]}.".colorize(:color => :blue)
