@@ -73,31 +73,31 @@ class WeatherAlertMbj::CLI
 
   def get_state_and_its_alerts
 
-    input = ""
+    state_input = ""
 
-    while input.downcase != "exit"
+    while state_input.downcase != "exit"
       puts "\nPlease enter the two-letter code for the US state or territory\nyou wish to get weather alerts for.".colorize(:color => :green)
       puts "  For example, CA = California and TX = Texas"
       puts "  Or type 'Exit' to quit Weather Alert."
 
-      input = gets.strip.downcase
+      state_input = gets.strip.downcase
 
       #Conditional statement that ensures user input a valid state code or valid state name
-      if STATE_CODES.keys.include?(input) || STATE_CODES.any? {|state_code,state_name| state_name.downcase == input}
+      if STATE_CODES.keys.include?(state_input) || STATE_CODES.any? {|state_code,state_name| state_name.downcase == state_input}
 
         #If user inputs full name of state (California) rather than its code (CA)
         #then the following code changes input to the state code.
-        STATE_CODES.each {|state_code,state_name| input = STATE_CODES.key(state_name) if state_name.downcase == input}
+        STATE_CODES.each {|state_code,state_name| state_input = STATE_CODES.key(state_name) if state_name.downcase == state_input}
 
-        puts "\nLoading data for " + "#{STATE_CODES[input]}".colorize(:color => :blue) + " ..."
+        puts "\nLoading data for " + "#{STATE_CODES[state_input]}".colorize(:color => :blue) + " ..."
         puts "(It may take up to 1 minute to retrieve data.)"
         line_break
 
-        @alerts = WeatherAlertMbj::Alert.create_alerts(input)
+        @alerts = WeatherAlertMbj::Alert.create_alerts(state_input)
 
         get_and_display_alert_details
 
-      elsif input.downcase != "exit"
+      elsif state_input.downcase != "exit"
         line_break
         puts "\nPlease double check the code you entered.".colorize(:color => :light_white, :background => :red)#(:color => :red)
         line_break
