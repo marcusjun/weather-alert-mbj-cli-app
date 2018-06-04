@@ -83,11 +83,11 @@ class WeatherAlertMbj::CLI
       input = gets.strip.downcase
 
       #Conditional statement that ensures user input a valid state code or valid state name
-      if STATE_CODES.keys.include?(input) || STATE_CODES.any? {|key,value| value.downcase == input}
+      if STATE_CODES.keys.include?(input) || STATE_CODES.any? {|state_code,state_name| state_name.downcase == input}
 
         #If user inputs full name of state (California) rather than its code (CA)
         #then the following code changes input to the state code.
-        STATE_CODES.each {|key,value| input = STATE_CODES.key(value) if value.downcase == input}
+        STATE_CODES.each {|state_code,state_name| input = STATE_CODES.key(state_name) if state_name.downcase == input}
 
         puts "\nLoading data for " + "#{STATE_CODES[input]}".colorize(:color => :blue) + " ..."
         puts "(It may take up to 1 minute to retrieve data.)"
