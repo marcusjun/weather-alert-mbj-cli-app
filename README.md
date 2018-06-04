@@ -20,7 +20,9 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+After installing the gem, run the executable in bin/weather-alert-mbj with the following Command
+
+./bin/weather-alert-mbj
 
 ## Development
 
@@ -30,7 +32,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/'marcusjun'/weather_alert_mbj.
+Bug reports and pull requests are welcome on GitHub at https://github.com/marcusjun/weather_alert_mbj.
 
 ## License
 
