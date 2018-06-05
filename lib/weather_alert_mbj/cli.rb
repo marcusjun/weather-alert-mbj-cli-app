@@ -134,19 +134,34 @@ class WeatherAlertMbj::CLI
         #elsif menu_input.to_i <= @state_alerts.length && menu_input.to_i > 0
         elsif menu_input.to_i.between?(1,@state_alerts.length)
 
+          selected_alert = @state_alerts[menu_input.to_i-1]
+
           #Displays the details of an alert including its
           #name, state, description, instructions and urls.
-          puts "\nAlert ##{menu_input}: #{@state_alerts[menu_input.to_i-1].name} (#{STATE_CODES[@state_alerts[menu_input.to_i-1].state]})".colorize(:color => :blue)
+
+          puts "\nAlert ##{menu_input}: #{selected_alert.name} (#{STATE_CODES[selected_alert.state]})".colorize(:color => :blue)
 
           puts "\nDescription:".colorize(:color => :blue)
-          puts "#{@state_alerts[menu_input.to_i-1].description}"
+          puts "#{selected_alert.description}"
 
-          puts "\nInstructions:".colorize(:color => :blue) unless @state_alerts[menu_input.to_i-1].instructions == ""
-          puts "#{@state_alerts[menu_input.to_i-1].instructions}" unless @state_alerts[menu_input.to_i-1].instructions == ""
+          puts "\nInstructions:".colorize(:color => :blue) unless selected_alert.instructions == ""
+          puts "#{selected_alert.instructions}" unless selected_alert.instructions == ""
 
           puts "\nFor more info, please see".colorize(:color => :blue)
-          puts"#{@state_alerts[menu_input.to_i-1].state_url}"
-          puts"#{@state_alerts[menu_input.to_i-1].alert_url}"
+          puts "#{selected_alert.state_url}"
+          puts "#{selected_alert.alert_url}"
+
+          #puts "\nAlert ##{menu_input}: #{@state_alerts[menu_input.to_i-1].name} (#{STATE_CODES[@state_alerts[menu_input.to_i-1].state]})".colorize(:color => :blue)
+
+          #puts "\nDescription:".colorize(:color => :blue)
+          #puts "#{@state_alerts[menu_input.to_i-1].description}"
+
+          #puts "\nInstructions:".colorize(:color => :blue) unless @state_alerts[menu_input.to_i-1].instructions == ""
+          #puts "#{@state_alerts[menu_input.to_i-1].instructions}" unless @state_alerts[menu_input.to_i-1].instructions == ""
+
+          #puts "\nFor more info, please see".colorize(:color => :blue)
+          #puts "#{@state_alerts[menu_input.to_i-1].state_url}"
+          #puts "#{@state_alerts[menu_input.to_i-1].alert_url}"
 
         elsif menu_input != "exit"
           puts "\n  Please double check the number you entered.".colorize(:color => :light_white, :background => :red)
