@@ -131,7 +131,8 @@ class WeatherAlertMbj::CLI
         if menu_input.downcase == "list"
           display_alerts
 
-        elsif menu_input.to_i <= @state_alerts.length && menu_input.to_i > 0
+        #elsif menu_input.to_i <= @state_alerts.length && menu_input.to_i > 0
+        elsif menu_input.to_i.between?(1,@state_alerts.length)
 
           #Displays the details of an alert including its
           #name, state, description, instructions and urls.
