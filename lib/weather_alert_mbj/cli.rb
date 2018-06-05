@@ -99,7 +99,7 @@ class WeatherAlertMbj::CLI
 
       elsif state_input.downcase != "exit"
         line_break
-        puts "\n  Please double check the code you entered.".colorize(:color => :light_white, :background => :red)#(:color => :red)
+        puts "\n  Please double check the code you entered.  ".colorize(:color => :light_white, :background => :red)#(:color => :red)
         line_break
       end
 
@@ -137,9 +137,11 @@ class WeatherAlertMbj::CLI
           selected_alert = @state_alerts[menu_input.to_i-1]
 
           #Displays the details of an alert including its
-          #name, state, description, instructions and urls.
+          #name, state, urgency (if immediate), description, instructions and urls.
 
           puts "\nAlert ##{menu_input}: #{selected_alert.name} (#{STATE_CODES[selected_alert.state]})".colorize(:color => :blue)
+
+          puts "Urgency: #{selected_alert.urgency}".colorize(:color => :red) if selected_alert.urgency.downcase == "immediate"
 
           puts "\nDescription:".colorize(:color => :blue)
           puts "#{selected_alert.description}"
@@ -164,7 +166,7 @@ class WeatherAlertMbj::CLI
           #puts "#{@state_alerts[menu_input.to_i-1].alert_url}"
 
         elsif menu_input != "exit"
-          puts "\n  Please double check the number you entered.".colorize(:color => :light_white, :background => :red)
+          puts "\n  Please double check the number you entered.  ".colorize(:color => :light_white, :background => :red)
         end
       end
     end
