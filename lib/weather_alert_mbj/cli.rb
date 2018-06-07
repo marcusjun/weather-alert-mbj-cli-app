@@ -153,18 +153,6 @@ class WeatherAlertMbj::CLI
           puts "#{selected_alert.state_url}"
           puts "#{selected_alert.alert_url}"
 
-          #puts "\nAlert ##{menu_input}: #{@state_alerts[menu_input.to_i-1].name} (#{STATE_CODES[@state_alerts[menu_input.to_i-1].state]})".colorize(:color => :blue)
-
-          #puts "\nDescription:".colorize(:color => :blue)
-          #puts "#{@state_alerts[menu_input.to_i-1].description}"
-
-          #puts "\nInstructions:".colorize(:color => :blue) unless @state_alerts[menu_input.to_i-1].instructions == ""
-          #puts "#{@state_alerts[menu_input.to_i-1].instructions}" unless @state_alerts[menu_input.to_i-1].instructions == ""
-
-          #puts "\nFor more info, please see".colorize(:color => :blue)
-          #puts "#{@state_alerts[menu_input.to_i-1].state_url}"
-          #puts "#{@state_alerts[menu_input.to_i-1].alert_url}"
-
         elsif menu_input != "exit"
           puts "\n  Please double check the number you entered.  ".colorize(:color => :light_white, :background => :red)
         end
