@@ -119,6 +119,7 @@ class WeatherAlertMbj::CLI
         #because there are no alerts to get more details on.
         menu_input = "exit"
         line_break
+
       else
         line_break
         puts "\nPlease enter the number (from 1 - #{@state_alerts.length}) of the alert for more details.".colorize(:color => :green)
@@ -146,6 +147,7 @@ class WeatherAlertMbj::CLI
           puts "\nDescription:".colorize(:color => :blue)
           puts "#{selected_alert.description}"
 
+          #puts instructions if the alert's attribute, instructions is not an empty string
           puts "\nInstructions:".colorize(:color => :blue) unless selected_alert.instructions == ""
           puts "#{selected_alert.instructions}" unless selected_alert.instructions == ""
 
