@@ -82,14 +82,14 @@ class WeatherAlertMbj::CLI
 
       state_input = gets.strip.downcase
 
-      #Conditional statement that ensures user input a valid state code or valid state name
+      #Conditional statement that ensures user input is a valid state code or valid state name
       if STATE_CODES.keys.include?(state_input) || STATE_CODES.any? {|state_code,state_name| state_name.downcase == state_input}
 
         #If user inputs full name of state (California) rather than its code (CA)
-        #then the following code changes input to the state code.
-        STATE_CODES.each {|state_code,state_name| state_input = STATE_CODES.key(state_name) if state_name.downcase == state_input}
+        #then the following code assigns state_input to the state code.
+        STATE_CODES.each {|state_code,state_name| state_input = STATE_CODES.key(state_name) if state_input == state_name.downcase}
 
-        puts "\nLoading data for " + "#{STATE_CODES[state_input]}".colorize(:color => :blue) + " ..."
+        puts "\nLoading data for " + "#{STATE_CODES[state_input]}".colorize(:color => :blue) + "..."
         puts "(It may take up to 1 minute to retrieve data.)"
         line_break
 
@@ -165,11 +165,13 @@ class WeatherAlertMbj::CLI
 
     @state_alerts.each_with_index do |alert,index|
 
+      selected_state = STATE_CODES[alert.state]
+
       if alert.name == "There are no active watches, warnings or advisories"
-        puts "\n  Currently, #{alert.name.downcase} for #{STATE_CODES[alert.state]}.".colorize(:color => :blue)
+        puts "\n  Currently, #{alert.name.downcase} for #{selected_state}.".colorize(:color => :blue)
 
       else
-        puts "\nAlert ##{index+1}: #{alert.name} (#{STATE_CODES[alert.state]})".colorize(:color => :blue)
+        puts "\nAlert ##{index+1}: #{alert.name} (#{selected_state})".colorize(:color => :blue)
 
         #Alerts with an "immediate" urgency have the text, "immediate" in red.
         if alert.urgency.downcase == "immediate"
