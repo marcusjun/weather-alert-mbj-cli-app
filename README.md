@@ -25,7 +25,7 @@ Or install it yourself as:
 
 Run the executable in bin/weather-alert-mbj with the following Command
 
-```./bin/weather-alert-mbj```
+  $ ./bin/weather-alert-mbj
 
 ## Development
 
