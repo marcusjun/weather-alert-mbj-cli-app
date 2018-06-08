@@ -4,9 +4,9 @@ This gem uses webscraping to get National Weather Service weather alerts by stat
 
 ## Installation
 
-You can clone or download the code from https://github.com/marcusjun/weather-alert-mbj-cli-app
+(You can clone or download the code from https://github.com/marcusjun/weather-alert-mbj-cli-app)
 
-/*Add this line to your application's Gemfile:
+Add this line to your application's Gemfile:
 
 ```ruby
 gem 'weather_alert_mbj'
@@ -18,14 +18,14 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install weather_alert_mbj*/
+    $ gem install weather_alert_mbj
 
 
 ## Usage
 
-After installing the gem, run the executable in bin/weather-alert-mbj with the following Command
+Run the executable in bin/weather-alert-mbj with the following Command
 
-./bin/weather-alert-mbj
+```./bin/weather-alert-mbj```
 
 ## Development
 
