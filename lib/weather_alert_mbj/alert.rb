@@ -16,13 +16,6 @@ class WeatherAlertMbj::Alert
       #For states that currently do not have any active watches, warnings or advisories
       if box.css("event").text == ""
         new_alert.name = "There are no active watches, warnings or advisories"
-        new_alert.date = "n/a"
-        new_alert.urgency = "n/a"
-        new_alert.status = "n/a"
-        new_alert.areas_affected = "n/a"
-        new_alert.alert_url = "n/a"
-        new_alert.description = "n/a"
-        new_alert.instructions = "n/a"
 
       else
         new_alert.name = box.css("event").text
@@ -41,9 +34,4 @@ class WeatherAlertMbj::Alert
       new_alert
     end
   end
-
-  #def open_in_browser
-    #system ("open '#{alert_url}'")
-  #end
-
 end
